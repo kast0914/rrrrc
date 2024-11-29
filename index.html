@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>급식 출석체크 시스템</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>급식 출석체크 시스템</h1>
+    <div class="container" id="main-container">
+        <!-- 엑셀 파일 업로드 -->
+        <div id="file-upload-section">
+            <label for="file-upload">급식 명단 엑셀 파일 업로드:</label>
+            <input type="file" id="file-upload" accept=".xlsx" required>
+            <button onclick="loadExcelFile()">다음</button>
+        </div>
+
+        <!-- 요일 선택 -->
+        <div id="day-select-section">
+            <label for="day-select">요일 선택:</label>
+            <select id="day-select">
+                <option value="월">월요일</option>
+                <option value="화">화요일</option>
+                <option value="수">수요일</option>
+                <option value="목">목요일</option>
+            </select>
+            <button onclick="loadDayData()">명단 로드</button>
+        </div>
+    </div>
+
+    <!-- 학번 입력 섹션 -->
+    <div id="student-input-section" class="centered">
+        <label for="student-id">학번 입력:</label>
+        <input type="text" id="student-id" placeholder="학번 입력">
+        <button onclick="checkAttendance()">확인</button>
+        <p id="result"></p>
+    </div>
+
+    <!-- 파일 다운로드 버튼 -->
+    <div id="download-section" style="display: none;">
+        <button id="download-button" onclick="downloadExcel()">파일 다운로드</button>
+    </div>
+
+    <!-- 승인 및 실패 효과음 -->
+    <audio id="correct-sound" src="correct.mp3"></audio>
+    <audio id="wrong-sound" src="wrong.mp3"></audio>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</body>
+</html>
